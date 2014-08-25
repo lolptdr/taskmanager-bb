@@ -1,0 +1,45 @@
+<ul>
+	<li ng-repeat="task in tasks">
+		<!-- <input type="checkbox" ng-model="task.isComplete" ng-click="completeTask(task)"> -->
+		<input type="checkbox" ng-click="completeTask(task)">
+		{{task.name}}
+		{{task.date}}
+	</li>
+</ul>
+
+<p>
+	New Task: <input type="text" ng-model="newTaskName">
+	<br>
+	Tags (separate new tags with a comma):	<input type="text" ng-model="newCategory">
+
+	<br>
+	<input type="submit" ng-click="addNewTask(newTaskName, newCategory)" >
+</p>
+
+
+
+<!-- {{tasks}} -->
+<ul> History of Completed Tasks:
+	<li ng-repeat="task in tasks | filter: {isComplete : true}">
+		{{task.name}}
+		{{task.dateCompleted}}
+	</li>
+</ul>
+<!-- <p>
+
+<input type="text" ng-model="searchCat">
+<ul> Search by Tag:
+	<li ng-repeat="task in tasks | filter: {categories : searchCat}">
+		{{task.name}}
+		{{task.dateCompleted}}
+	</li>	
+</ul> -->
+<p>
+<p>
+<ul> Search by Tag (with initialization of empty):
+	<input type="text" ng-model="searchCat2">
+	<li ng-repeat="task in tasks | filter: showCat(searchCat2)">
+		{{task.name}}
+		{{task.dateCompleted}}
+	</li>	
+</ul>
